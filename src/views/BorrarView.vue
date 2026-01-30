@@ -1,14 +1,14 @@
 <template>
   <div>
-    <ListarTodos />
+    <Borrar />
   </div>
 </template>
 
 <script>
-import ListarTodos from "@/components/ListarTodos.vue";
+import Borrar from "@/components/Borrar.vue";
 export default {
   components: {
-    ListarTodos,
+    Borrar,
   },
 };
 </script>

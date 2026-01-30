@@ -1,14 +1,14 @@
 <template>
   <div>
-    <ListarTodos />
+    <Actualizar />
   </div>
 </template>
 
 <script>
-import ListarTodos from "@/components/ListarTodos.vue";
+import Actualizar from "@/components/Actualizar.vue";
 export default {
   components: {
-    ListarTodos,
+    Actualizar,
   },
 };
 </script>

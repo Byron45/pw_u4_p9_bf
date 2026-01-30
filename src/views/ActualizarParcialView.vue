@@ -1,14 +1,14 @@
 <template>
   <div>
-    <ListarTodos />
+    <ActualizarParcial />
   </div>
 </template>
 
 <script>
-import ListarTodos from "@/components/ListarTodos.vue";
+import ActualizarParcial from "@/components/ActualizarParcial.vue";
 export default {
   components: {
-    ListarTodos,
+    ActualizarParcial,
   },
 };
 </script>
