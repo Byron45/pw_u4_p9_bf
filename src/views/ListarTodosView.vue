@@ -14,11 +14,9 @@ export default {
   },
   async mounted() {
     try {
-      // Obtener el token con credenciales mockeadas
       const tokenData = await getToken("jahir78", "Elpepe72");
       console.log("Token obtenido:", tokenData);
 
-      // Establecer el token en MatriculaClient
       setToken(tokenData.accessToken);
       this.cargando = false;
     } catch (error) {

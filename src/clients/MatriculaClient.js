@@ -1,16 +1,13 @@
 import axios from "axios";
 
-// Variable para almacenar el token dinámicamente
 let TOKEN = "";
 
 const URL = "http://localhost:8081/matricula/api/v1.0/estudiantes";
 
-// Función para establecer el token
 export const setToken = (token) => {
     TOKEN = token;
 };
 
-// Función para obtener el token actual
 export const getTokenValue = () => {
     return TOKEN;
 };
