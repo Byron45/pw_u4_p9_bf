@@ -5,10 +5,28 @@
 </template>
 
 <script>
+import { getToken } from "@/clients/AutorizationClient";
+import { setToken } from "@/clients/MatriculaClient";
 import ListarTodos from "@/components/ListarTodos.vue";
 export default {
   components: {
     ListarTodos,
+  },
+  async mounted() {
+    try {
+      // Obtener el token con credenciales mockeadas
+      const tokenData = await getToken("jahir78", "Elpepe72");
+      console.log("Token obtenido:", tokenData);
+
+      // Establecer el token en MatriculaClient
+      setToken(tokenData.accessToken);
+      this.cargando = false;
+    } catch (error) {
+      console.error("Error al obtener el token:", error);
+      this.error =
+        "Error de autenticación. Por favor, verifica las credenciales.";
+      this.cargando = false;
+    }
   },
 };
 </script>
