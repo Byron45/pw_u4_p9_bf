@@ -85,6 +85,10 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: LoginView,
+    meta: {
+      requiereAutorizacion: false,
+      esPublica: true
+    }
   }
 ]
 

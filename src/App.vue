@@ -8,7 +8,10 @@
     <router-link to="/actualizar">Actualizar</router-link> |
     <router-link to="/actualizarparcial">Actualizar Parcial</router-link> |
     <router-link to="/borrar">Eliminar</router-link> |
-    <!--<router-link to="/login">Login</router-link>-->
+    <router-link to="/login" v-if="!estaLogueado">Login</router-link>
+    <button v-if="estaLogueado" @click="logout" class="logout-btn">
+      Cerrar Sesión
+    </button>
   </nav>
   <router-view />
 </template>
@@ -16,6 +19,30 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      estaLogueado: false,
+    };
+  },
+  mounted() {
+    this.verificarAutenticacion();
+  },
+  methods: {
+    verificarAutenticacion() {
+      this.estaLogueado = localStorage.getItem("Esta Autenticado") === "true";
+    },
+    logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("Esta Autenticado");
+      this.estaLogueado = false;
+      this.$router.push({ name: "Login" });
+    },
+  },
+  watch: {
+    $route() {
+      this.verificarAutenticacion();
+    },
+  },
 };
 </script>
 
@@ -38,6 +65,21 @@ nav a {
 }
 
 nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+.logout-btn {
+  font-weight: bold;
+  color: #2c3e50;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  text-decoration: none;
+}
+
+.logout-btn:hover {
   color: #42b983;
 }
 </style>
