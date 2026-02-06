@@ -6,6 +6,7 @@ import GuardarView from '@/views/GuardarView.vue'
 import ActualizarView from '@/views/ActualizarView.vue'
 import ActualizarParcialView from '@/views/ActualizarParcialView.vue'
 import BorrarView from '@/views/BorrarView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const routes = [
   {
@@ -80,6 +81,11 @@ const routes = [
       esPublica: false
     }
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView,
+  }
 ]
 
 const router = createRouter({
@@ -91,14 +97,19 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiereAutorizacion) {
     /*Le envio a una pagina de Login*/
-    console.log('Redirigiendo a Login...');
-
+    const estaAutenticado = localStorage.getItem("Esta Autenticado");
+    const token = localStorage.getItem("token");
+    if (!estaAutenticado) {
+      console.log('Redirigiendo a Login...');
+      next({ name: 'Login' });
+    } else {
+      next();
+    }
   } else {
     /*Le dejo pasar sin validaciones*/
     console.log('Pase Libre');
     next();
   }
-
 })
 
 export default router

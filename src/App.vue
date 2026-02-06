@@ -7,7 +7,8 @@
     <router-link to="/guardar">Guardar</router-link> |
     <router-link to="/actualizar">Actualizar</router-link> |
     <router-link to="/actualizarparcial">Actualizar Parcial</router-link> |
-    <router-link to="/borrar">Eliminar</router-link>
+    <router-link to="/borrar">Eliminar</router-link> |
+    <!--<router-link to="/login">Login</router-link>-->
   </nav>
   <router-view />
 </template>
